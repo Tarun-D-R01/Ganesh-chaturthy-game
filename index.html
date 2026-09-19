@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ganesh Chaturthi Special</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://ajax.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <link rel="modulepreload" href="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js">
+    <link rel="preload" href="ganesha.glb" as="fetch" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+    <script
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+
+<body class="booting">
+
+    <!-- Background spotlight -->
+    <div id="spotlight"></div>
+
+    <div id="festival-decor" aria-hidden="true">
+        <div class="toran">
+            🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼
+        </div>
+        <div class="lantern">🏮</div>
+        <div class="lantern">🪔</div>
+        <div class="lantern">🪔</div>
+        <div class="lantern">🏮</div>
+        <div class="sparkle" style="left:12%; bottom:8%; animation-delay:0s"></div>
+        <div class="sparkle" style="left:28%; bottom:2%; animation-delay:1.2s"></div>
+        <div class="sparkle" style="left:47%; bottom:10%; animation-delay:2.1s"></div>
+        <div class="sparkle" style="left:63%; bottom:4%; animation-delay:0.6s"></div>
+        <div class="sparkle" style="left:81%; bottom:12%; animation-delay:1.8s"></div>
+        <div class="sparkle" style="left:91%; bottom:1%; animation-delay:2.8s"></div>
+        <div class="mantra-ticker">
+            <span>गणपती बाप्पा मोरया · सुख कर्ता दुःखहर्ता · विघ्नहर्ता गणेश · मंगल मूर्ति मोरया · गणपती बाप्पा मोरया · सुख कर्ता दुःखहर्ता · विघ्नहर्ता गणेश · मंगल मूर्ति मोरया · </span>
+        </div>
+    </div>
+
+    <div id="morya-flash"><b>गणपती बाप्पा मोरया!</b></div>
+
+    <div id="mandap-curtains" aria-hidden="true">
+        <div class="curtain-valance"></div>
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+    </div>
+
+    <div id="boot-screen" aria-hidden="true">
+        <div class="boot-om">ॐ</div>
+        <p class="boot-text">Preparing the celebration</p>
+    </div>
+
+    <!-- ================= LANDING SCREEN ================= -->
+
+    <div id="landing-screen" class="screen active">
+
+        <h1 class="title">
+            ✨ ॐ श्री गणेशाय नमः ✨
+        </h1>
+
+        <div class="three-container">
+
+            <div class="golden-aura" id="aura"></div>
+
+            <model-viewer
+                id="ganesha-model"
+                src="ganesha.glb"
+                alt="3D Ganesha Model"
+                loading="eager"
+                reveal="auto"
+                auto-rotate
+                rotation-per-second="30deg"
+                auto-rotate-delay="1000"
+                interaction-prompt="none"
+                camera-controls
+                disable-zoom
+                shadow-intensity="2"
+                shadow-softness="1"
+                exposure="1.3"
+                tone-mapping="commerce"
+                environment-image="legacy">
+            </model-viewer>
+
+        </div>
+
+        <p class="subtitle" id="interactive-subtitle">
+            Welcome to the Ganesh Chaturthi Celebration
+        </p>
+
+        <button id="start-btn" onclick="goToMenu()">
+            GET STARTED
+        </button>
+
+        <button id="chant-btn" onclick="chantMorya()">
+            गणपती बाप्पा मोरया
+        </button>
+
+        <div
+            class="diya left-diya"
+            onclick="triggerAarti(this)">
+            🪔
+        </div>
+
+        <div
+            class="diya right-diya"
+            onclick="triggerAarti(this)">
+            🪔
+        </div>
+
+    </div>
+
+
+    <!-- ================= MENU SCREEN ================= -->
+
+    <div id="menu-screen" class="screen">
+
+        <h2 class="title">
+            CHOOSE YOUR EXPERIENCE
+        </h2>
+
+        <div class="menu-model-container">
+
+            <model-viewer
+                id="ganesha-menu-model"
+                alt="3D Ganesha Mini Model"
+                loading="lazy"
+                auto-rotate
+                rotation-per-second="20deg"
+                interaction-prompt="none"
+                disable-zoom
+                exposure="1.2">
+            </model-viewer>
+
+        </div>
+
+
+        <div class="card-container">
+
+            <div
+                class="card"
+                onclick="startModakGame()">
+
+                <div class="card-icon">
+                    🥟
+                </div>
+
+                <h3>
+                    Modak Catcher
+                </h3>
+
+                <p>
+                    Catch sweets, avoid hazards and beat your high score!
+                </p>
+
+            </div>
+
+
+            <div
+                class="card"
+                onclick="startFestivalQuiz()">
+
+                <div class="card-icon">
+                    ❓
+                </div>
+
+                <h3>
+                    Festival Quiz
+                </h3>
+
+                <p>
+                    Ganesha AI asks 5 levels — race the clock and beat your best!
+                </p>
+
+            </div>
+
+
+            <div
+                class="card"
+                onclick="startAartiEcho()">
+
+                <div class="card-icon">
+                    🔔
+                </div>
+
+                <h3>
+                    Aarti Echo
+                </h3>
+
+                <p>
+                    Watch the temple sequence, repeat it, and keep the aarti going!
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="devotee-bar">
+            <input
+                id="devotee-name"
+                maxlength="24"
+                placeholder="Your name for the blessing card">
+            <button type="button" onclick="showFestivalBlessing()">
+                Blessing Card
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- ================= MODAK GAME ================= -->
+
+    <div id="game-screen" class="screen">
+
+        <div class="game-header">
+
+            <button
+                class="back-btn"
+                onclick="backToMenu()">
+                ← Menu
+            </button>
+
+            <div class="game-stats">
+
+                <span>
+                    Score:
+                    <b id="score">0</b>
+                </span>
+
+                <span>
+                    Lives:
+                    <b id="lives">❤️❤️❤️</b>
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div id="game-container">
+
+            <!-- Decorative game title -->
+            <div class="game-symbol">
+                ॐ
+            </div>
+
+            <!-- Basket -->
+            <div id="player-basket">
+                🧺
+            </div>
+
+        </div>
+
+
+        <!-- ================= GAME OVER ================= -->
+
+        <div
+            id="game-over-modal"
+            class="modal hidden">
+
+            <div class="modal-content">
+
+                <h2>
+                    Game Over! 🪔
+                </h2>
+
+                <p>
+                    Final Score:
+                    <strong id="final-score">
+                        0
+                    </strong>
+                </p>
+
+                <button onclick="restartGame()">
+                    Play Again 🔄
+                </button>
+
+                <button onclick="backToMenu()">
+                    Main Menu 🏠
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FESTIVAL QUIZ ================= -->
+
+    <div id="quiz-screen" class="screen">
+
+        <div class="game-header">
+
+            <button
+                class="back-btn"
+                onclick="backToMenu()">
+                ← Menu
+            </button>
+
+            <div class="game-stats">
+
+                <span>
+                    Score:
+                    <b id="quiz-score">0</b>
+                </span>
+
+                <span>
+                    Best:
+                    <b id="quiz-best">0</b>
+                </span>
+
+                <span>
+                    Lives:
+                    <b id="quiz-lives">❤️❤️❤️</b>
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div id="quiz-panel">
+
+            <div id="quiz-intro">
+
+                <p class="quiz-ai-kicker">
+                    Ganesha AI is ready
+                </p>
+
+                <h2>
+                    Festival Quiz
+                </h2>
+
+                <p class="quiz-intro-copy">
+                    5 levels. 5 questions each. Harder every round.
+                    Faster answers score more. Keep your streak alive.
+                </p>
+
+                <ul class="quiz-rules">
+                    <li>Level 1 starts easy — Level 5 is expert</li>
+                    <li>3 lives. A wrong answer or timeout costs 1 life</li>
+                    <li>Speed bonus + streak multiplier for competitive scores</li>
+                </ul>
+
+                <p class="quiz-best-line">
+                    Your best:
+                    <b id="quiz-intro-best">0</b>
+                </p>
+
+                <button
+                    id="quiz-start-btn"
+                    onclick="beginFestivalQuiz()">
+                    Challenge Ganesha AI
+                </button>
+
+            </div>
+
+
+            <div id="quiz-play" class="hidden">
+
+                <div class="quiz-meta">
+
+                    <span id="quiz-level-label">
+                        Level 1 · Little Devotee
+                    </span>
+
+                    <span id="quiz-progress">
+                        1 / 5
+                    </span>
+
+                    <span id="quiz-streak">
+                        Streak ×0
+                    </span>
+
+                </div>
+
+                <div class="quiz-timer-track">
+                    <div id="quiz-timer-fill"></div>
+                </div>
+
+                <p id="quiz-timer-text">
+                    20s
+                </p>
+
+                <div class="quiz-ai">
+
+                    <div class="quiz-ai-face">
+                        🐘
+                    </div>
+
+                    <div class="quiz-ai-bubble">
+
+                        <p id="quiz-ai-status">
+                            Ganesha AI is thinking...
+                        </p>
+
+                        <h3 id="quiz-question"></h3>
+
+                    </div>
+
+                </div>
+
+                <div id="quiz-options"></div>
+
+                <p id="quiz-explain" class="hidden"></p>
+
+                <button
+                    id="quiz-next-btn"
+                    class="hidden"
+                    onclick="advanceFestivalQuiz()">
+                    Next
+                </button>
+
+            </div>
+
+
+            <div id="quiz-result" class="hidden">
+
+                <h2 id="quiz-result-title">
+                    Quiz Complete
+                </h2>
+
+                <p id="quiz-result-rank"></p>
+
+                <p>
+                    Final Score:
+                    <strong id="quiz-final-score">0</strong>
+                </p>
+
+                <p id="quiz-result-detail"></p>
+
+                <button onclick="beginFestivalQuiz()">
+                    Play Again 🔄
+                </button>
+
+                <button onclick="backToMenu()">
+                    Main Menu 🏠
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= AARTI ECHO ================= -->
+
+    <div id="aarti-screen" class="screen">
+
+        <div class="game-header">
+
+            <button
+                class="back-btn"
+                onclick="backToMenu()">
+                ← Menu
+            </button>
+
+            <div class="game-stats">
+
+                <span>
+                    Score:
+                    <b id="aarti-score">0</b>
+                </span>
+
+                <span>
+                    Best:
+                    <b id="aarti-best">0</b>
+                </span>
+
+                <span>
+                    Lives:
+                    <b id="aarti-lives">❤️❤️❤️</b>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div id="aarti-panel">
+
+            <h2 class="title" style="font-size:1.6rem">
+                Aarti Echo
+            </h2>
+
+            <p id="aarti-round">
+                Round 1
+            </p>
+
+            <p id="aarti-status">
+                Repeat the sacred sequence Ganesha shows you.
+            </p>
+
+            <div class="aarti-grid" id="aarti-grid"></div>
+
+            <button id="aarti-start-btn" onclick="beginAartiEcho()">
+                Start Aarti
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div id="blessing-modal" class="modal hidden">
+        <div class="modal-content" id="blessing-card">
+            <h2>Festival Blessing</h2>
+            <p class="blessing-mantra">ॐ श्री गणेशाय नमः</p>
+            <p id="blessing-name"></p>
+            <div class="blessing-stats" id="blessing-stats"></div>
+            <p>
+                Festival Aura:
+                <strong id="blessing-aura">0</strong>
+            </p>
+            <p class="blessing-mantra">गणपती बाप्पा मोरया</p>
+            <button type="button" onclick="closeFestivalBlessing()">
+                Close
+            </button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="quiz-data.js"></script>
+    <script src="quiz.js"></script>
+    <script src="aarti.js"></script>
+
+</body>
+</html>
