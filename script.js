@@ -545,7 +545,8 @@ function showFestivalBlessing() {
     const modakBest = Number(localStorage.getItem("ganeshHighScore")) || 0;
     const quizBest = Number(localStorage.getItem("ganeshQuizHighScoreV2")) || 0;
     const echoBest = Number(localStorage.getItem("ganeshAartiHighScore")) || 0;
-    const aura = modakBest + quizBest + echoBest;
+    const sweetsCrushBest = Number(localStorage.getItem("sweetsCrushBest")) || 0;
+    const aura = modakBest + quizBest + echoBest + sweetsCrushBest;
 
     document.getElementById("blessing-name").innerText =
         `Blessings upon ${name}`;
@@ -553,7 +554,8 @@ function showFestivalBlessing() {
     document.getElementById("blessing-stats").innerHTML =
         `Modak Catcher best: <b>${modakBest}</b><br>` +
         `Festival Quiz best: <b>${quizBest}</b><br>` +
-        `Aarti Echo best: <b>${echoBest}</b>`;
+        `Aarti Echo best: <b>${echoBest}</b><br>` +
+        `Sweets Crush best: <b>${sweetsCrushBest}</b> (Highest Level: ${Math.floor(sweetsCrushBest / 500) + 1})`;
 
     document.getElementById("blessing-aura").innerText = aura;
     document.getElementById("blessing-modal").classList.remove("hidden");
@@ -805,6 +807,11 @@ function startModakGameNow() {
 
     if (typeof aartiScreen !== "undefined" && aartiScreen) {
         aartiScreen.classList.remove("active");
+    }
+
+    const sweetsCrushScreen = document.getElementById('sweets-crush-screen');
+    if (sweetsCrushScreen) {
+        sweetsCrushScreen.classList.remove("active");
     }
 
     gameScreen
@@ -1668,12 +1675,8 @@ function shakeOnThunderHit() {
 function updateLives() {
 
     livesDisplay.innerText =
-        "❤️".repeat(
-            Math.max(
-                0,
-                lives
-            )
-        );
+        "Lives: " +
+        lives.toString();
 
 }
 
@@ -1834,6 +1837,10 @@ function backToMenuNow() {
         stopAartiEcho();
     }
 
+    if (typeof stopSweetsCrush === "function") {
+        stopSweetsCrush();
+    }
+
     closeFestivalBlessing();
 
 
@@ -1869,6 +1876,11 @@ function backToMenuNow() {
 
     if (typeof aartiScreen !== "undefined" && aartiScreen) {
         aartiScreen.classList.remove("active");
+    }
+
+    const sweetsCrushScreen = document.getElementById('sweets-crush-screen');
+    if (sweetsCrushScreen) {
+        sweetsCrushScreen.classList.remove("active");
     }
 
 

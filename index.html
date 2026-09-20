@@ -32,9 +32,6 @@
     <div id="spotlight"></div>
 
     <div id="festival-decor" aria-hidden="true">
-        <div class="toran">
-            🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼💛🌼
-        </div>
         <div class="lantern">🏮</div>
         <div class="lantern">🪔</div>
         <div class="lantern">🪔</div>
@@ -205,6 +202,25 @@
 
             </div>
 
+
+            <div
+                class="card"
+                onclick="startSweetsCrush()">
+
+                <div class="card-icon">
+                    🍬
+                </div>
+
+                <h3>
+                    Sweets Crush
+                </h3>
+
+                <p>
+                    Match Indian sweets in this delicious puzzle game!
+                </p>
+
+            </div>
+
         </div>
 
         <div class="devotee-bar">
@@ -241,7 +257,7 @@
 
                 <span>
                     Lives:
-                    <b id="lives">❤️❤️❤️</b>
+                    <b id="lives"></b>
                 </span>
 
             </div>
@@ -324,7 +340,7 @@
 
                 <span>
                     Lives:
-                    <b id="quiz-lives">❤️❤️❤️</b>
+                    <b id="quiz-lives"></b>
                 </span>
 
             </div>
@@ -483,7 +499,7 @@
 
                 <span>
                     Lives:
-                    <b id="aarti-lives">❤️❤️❤️</b>
+                    <b id="aarti-lives"></b>
                 </span>
 
             </div>
@@ -515,6 +531,96 @@
     </div>
 
 
+    <!-- ================= SWEETS CRUSH GAME ================= -->
+
+    <div id="sweets-crush-screen" class="screen">
+
+        <div class="game-header">
+
+            <button
+                class="back-btn"
+                onclick="backToMenu()">
+                ← Menu
+            </button>
+
+            <div class="game-stats">
+
+                <span>
+                    Score:
+                    <b id="sweets-crush-score">0</b>
+                </span>
+
+                <span>
+                    Level:
+                    <b id="sweets-crush-level">1</b>
+                </span>
+
+                <span>
+                    Time:
+                    <b id="sweets-crush-time">60</b>s
+                </span>
+
+                <span>
+                    Best:
+                    <b id="sweets-crush-best">0</b>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div id="sweets-crush-container">
+
+            <div id="sweets-crush-grid"></div>
+
+            <div id="sweets-crush-message"></div>
+
+            <!-- Level Progress -->
+            <div id="sweets-crush-progress">
+                <div id="sweets-crush-progress-bar">
+                    <div id="sweets-crush-progress-fill"></div>
+                </div>
+                <div id="sweets-crush-progress-text">
+                    Level Progress: <span id="sweets-crush-progress-score">0</span> / <span id="sweets-crush-progress-target">500</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= SWEETS CRUSH GAME OVER ================= -->
+
+        <div
+            id="sweets-crush-gameover"
+            class="modal hidden">
+
+            <div class="modal-content">
+
+                <h2>
+                    Game Over! 🪔
+                </h2>
+
+                <p>
+                    Final Score:
+                    <strong id="sweets-crush-final-score">
+                        0
+                    </strong>
+                </p>
+
+                <button onclick="restartSweetsCrush()">
+                    Play Again 🔄
+                </button>
+
+                <button onclick="backToMenu()">
+                    Main Menu 🏠
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
     <div id="blessing-modal" class="modal hidden">
         <div class="modal-content" id="blessing-card">
             <h2>Festival Blessing</h2>
@@ -537,6 +643,7 @@
     <script src="quiz-data.js"></script>
     <script src="quiz.js"></script>
     <script src="aarti.js"></script>
+    <script src="sweet-match.js"></script>
 
 </body>
 </html>
