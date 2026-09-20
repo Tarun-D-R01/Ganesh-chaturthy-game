@@ -173,7 +173,7 @@ function revealLandingIntro() {
         }
     );
 
-    createMarigoldPetals();
+    // createMarigoldPetals(); // Disabled to improve model loading performance
 
 }
 
@@ -248,16 +248,12 @@ const ganeshaModel = document.getElementById('ganesha-model');
 const modelLoading = document.getElementById('model-loading');
 
 if (ganeshaModel && modelLoading) {
+    // Hide loading indicator immediately since model shows with reveal="auto"
+    modelLoading.classList.add('hidden');
+    
     ganeshaModel.addEventListener('load', () => {
         modelLoading.classList.add('hidden');
     });
-    
-    // Fallback: hide after 60 seconds if model takes too long
-    setTimeout(() => {
-        if (modelLoading && !modelLoading.classList.contains('hidden')) {
-            modelLoading.classList.add('hidden');
-        }
-    }, 60000);
 }
 
 
@@ -387,77 +383,13 @@ function triggerAarti(diyaElement) {
 
 
 /* =========================================================
-   PETALS
+   PETALS (DISABLED FOR PERFORMANCE)
    ========================================================= */
 
 function createMarigoldPetals() {
-
-    const petalCount = 25;
-
-    const petals = [
-        "🌸",
-        "🌼",
-        "✨",
-        "🟡"
-    ];
-
-    for (
-        let i = 0;
-        i < petalCount;
-        i++
-    ) {
-
-        const petal =
-            document.createElement("div");
-
-        petal.className =
-            "petal";
-
-        petal.innerText =
-            petals[
-                Math.floor(
-                    Math.random() *
-                    petals.length
-                )
-            ];
-
-        petal.style.left =
-            `${Math.random() * 100}vw`;
-
-        document.body.appendChild(
-            petal
-        );
-
-        gsap.to(petal, {
-
-            y: "105vh",
-
-            x:
-                "+=" +
-                (
-                    Math.random() *
-                    100 -
-                    50
-                ),
-
-            rotation:
-                Math.random() * 360,
-
-            duration:
-                Math.random() * 5 +
-                5,
-
-            repeat: -1,
-
-            delay:
-                Math.random() * 5,
-
-            ease: "none"
-
-        });
-
-    }
-
+    // Disabled to improve 3D model loading performance
+    // Falling petals were causing performance issues
+    return;
 }
 
 
