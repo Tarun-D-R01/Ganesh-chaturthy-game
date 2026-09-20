@@ -243,6 +243,23 @@ if (document.readyState === "loading") {
 
 }
 
+// Hide loading indicator when 3D model loads
+const ganeshaModel = document.getElementById('ganesha-model');
+const modelLoading = document.getElementById('model-loading');
+
+if (ganeshaModel && modelLoading) {
+    ganeshaModel.addEventListener('load', () => {
+        modelLoading.classList.add('hidden');
+    });
+    
+    // Fallback: hide after 60 seconds if model takes too long
+    setTimeout(() => {
+        if (modelLoading && !modelLoading.classList.contains('hidden')) {
+            modelLoading.classList.add('hidden');
+        }
+    }, 60000);
+}
+
 
 /* =========================================================
    SPOTLIGHT

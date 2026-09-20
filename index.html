@@ -72,12 +72,18 @@
 
             <div class="golden-aura" id="aura"></div>
 
+            <!-- Loading Indicator -->
+            <div id="model-loading" class="model-loading">
+                <div class="loading-spinner"></div>
+                <p>Loading Ganesha Model...</p>
+            </div>
+
             <model-viewer
                 id="ganesha-model"
                 src="ganesha.glb"
                 alt="3D Ganesha Model"
                 loading="eager"
-                reveal="auto"
+                reveal="when-loaded"
                 auto-rotate
                 rotation-per-second="30deg"
                 auto-rotate-delay="1000"

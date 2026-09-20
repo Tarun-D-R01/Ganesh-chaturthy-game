@@ -591,6 +591,49 @@ model-viewer {
         );
 }
 
+/* ================================================= */
+/* MODEL LOADING INDICATOR */
+/* ================================================= */
+
+.model-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 215, 0, 0.2);
+    border-top: 4px solid #FFD700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.model-loading p {
+    color: #FFD700;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+}
+
+.model-loading.hidden {
+    display: none;
+}
+
 
 /* ================================================= */
 /* DIYA */
